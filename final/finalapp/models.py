@@ -62,6 +62,7 @@ class MassageChair(models.Model):
 
 class Branch(models.Model):
     BID = models.CharField(max_length=20)
+    BName = models.CharField(max_length=20,null=True, blank=True)
     SID = models.CharField(max_length=20)
     SAc = models.IntegerField()
 
@@ -81,6 +82,7 @@ class KPI(models.Model):
 
 class Salesperson(models.Model):
     SID = models.CharField(max_length=20)
+    SName = models.CharField(max_length=20,null=True, blank=True)
     SQ = models.IntegerField()
     SR = models.DecimalField(max_digits=10, decimal_places=2)
     STQ = models.IntegerField()
