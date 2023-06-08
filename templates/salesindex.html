@@ -270,22 +270,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
-                                {% comment %} <div class="dropdown"> {% endcomment %}
-                                    {% comment %} <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         選擇業務員
-                                    </button> {% endcomment %}
-                                    {% comment %} <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">                                        {% endcomment %}
-                                         {% comment %} {% for salesperson in salespersons %}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">                                        {% for salesperson in salespersons %}
                                         <a class="dropdown-item" href="#">{{ salesperson.SName }}</a>
-                                        {% endfor %} {% endcomment %}
-                                    {% comment %} </div> {% endcomment %}
-                                {% comment %} </div> {% endcomment %}
-                                <select id="who" class="who">
-                                    <option>----選擇業務員----</option>
-                                    {% for salesperson in salespersons %}
-                                        <option value= {{ salesperson.SName }}>{{ salesperson.SName }}</option>
-                                    {% endfor %}
-                                </select>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -319,8 +312,8 @@
                     <div class="row">
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">{{salesperson.SR}}</h2>
-                                <span class="desc">客戶回報率</span>
+                                <h2 class="number">請選擇業務員</h2>
+                                <span class="desc">客戶回報率1</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
@@ -328,7 +321,7 @@
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">高級豪華型</h2>
+                                <h2 class="number">請選擇業務員</h2>
                                 <span class="desc">最多賣出</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-shopping-cart"></i>
@@ -337,7 +330,7 @@
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">50%</h2>
+                                <h2 class="number">請選擇業務員</h2>
                                 <span class="desc">業績達成率</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
