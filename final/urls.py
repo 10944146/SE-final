@@ -20,5 +20,6 @@ from finalapp import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('sales/', views.sales_view, name='sales.html'),
+    path('salesindex/', views.salesindex_view, name='salesindex.html'),
 ]
 
