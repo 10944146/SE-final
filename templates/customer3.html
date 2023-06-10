@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>業務員資料</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop3 d-none d-lg-block">
+            <div class="section__content section__content--p35">
+                <div class="header3-wrap">
+                    <div class="header__logo">
+                        <a href="#">
+                            <img src="{% static 'images/icon/iconla.png' %}" alt="CoolAdmin" />
+                        </a>
+                    </div>
+                    <div class="header__navbar">
+                        <ul class="list-unstyled">
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-tachometer-alt"></i>分店
+                                    <span class="bot-line"></span>
+                                </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="#">中壢中原店</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">中壢中原店</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">中壢中原店</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">中壢中原店</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span class="bot-line"></span>業務員</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-trophy"></i>
+                                    <span class="bot-line"></span>按摩椅</a>
+                            </li>
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-copy"></i>
+                                    <span class="bot-line"></span>客戶</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="customer.html">中壢中原店</a>
+                                    </li>
+                                    <li>
+                                        <a href="customer1.html">中壢中北店</a>
+                                    </li>
+                                    <li>
+                                        <a href="customer2.html">中壢中興店</a>
+                                    </li>
+                                    <li>
+                                        <a href="customer3.html">中壢中大店</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header__tool">
+                        <div class="account-wrap">
+                            <div class="account-item account-item--style2 clearfix js-item-menu">
+                                <div class="image">
+                                    <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                </div>
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">劉建昱</a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
+                                                <a href="#">劉建昱</a>
+                                            </h5>
+                                            <span class="email">jianyu@example.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-account"></i>帳戶中心</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-settings"></i>其他設定</a>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-power"></i>登出</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile header-mobile-2 d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="{% static 'images/icon/logo-white.png' %}" alt="CoolAdmin" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>分店</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="index.html">中壢中原店</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">中壢中原店</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">中壢中原店</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">中壢中原店</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-shopping-basket"></i>
+                                <span class="bot-line"></span>業務員</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-trophy"></i>
+                                <span class="bot-line"></span>按摩椅</a>
+                        </li>
+                        <li class="has-sub">
+                            <a href="#">
+                                <i class="fas fa-copy"></i>
+                                <span class="bot-line"></span>客戶</a>
+                            <ul class="header3-sub-list list-unstyled">
+                                <li>
+                                    <a href="customer.html">中壢中原店</a>
+                                </li>
+                                <li>
+                                    <a href="customer1.html">中壢中北店</a>
+                                </li>
+                                <li>
+                                    <a href="customer2.html">中壢中興店</a>
+                                </li>
+                                <li>
+                                    <a href="customer3.html">中壢中大店</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="sub-header-mobile-2 d-block d-lg-none">
+            <div class="header__tool">
+                <div class="account-wrap">
+                    <div class="account-item account-item--style2 clearfix js-item-menu">
+                        <div class="image">
+                            <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                        </div>
+                        <div class="content">
+                            <a class="js-acc-btn" href="#">劉建昱</a>
+                        </div>
+                        <div class="account-dropdown js-dropdown">
+                            <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a href="#">劉建昱</a>
+                                    </h5>
+                                    <span class="email">jianyu@example.com</span>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-account"></i>帳戶中心</a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-settings"></i>其他設定</a>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__footer">
+                                <a href="#">
+                                    <i class="zmdi zmdi-power"></i>登出</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END HEADER MOBILE -->
+
+        <!-- PAGE CONTENT-->
+        <div class="page-content--bgf7">
+            <!-- BREADCRUMB-->
+            <section class="au-breadcrumb2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="au-breadcrumb-content">
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">您位於：</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="#">客戶</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                        <li class="list-inline-item">中壢中大店</li>
+                                    </ul>
+                                </div>
+                                <form class="au-form-icon--sm" action="" method="post">
+                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="搜尋 &amp; 尋找...">
+                                    <button class="au-btn--submit2" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END BREADCRUMB-->
+
+            <!-- WELCOME-->
+            <section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title-4">歡迎
+                                <span>劉老闆！</span>
+                            </h1>
+                            <hr class="line-seprate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END WELCOME-->
+
+            <!-- 客戶分析簡單版資料-->
+            <section class="statistic statistic2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--blue">
+                                <h2 class="number">38</h2>
+                                <span class="desc">本月新進客戶</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--orange">
+                                <h2 class="number">品項三</h2>
+                                <span class="desc">客戶偏好產品</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--bluegreen">
+                                <h2 class="number">親友推薦</h2>
+                                <span class="desc">客戶最常使用之獲取訊息平台</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--green">
+                                <h2 class="number">$218,000</h2>
+                                <span class="desc">本月客戶銷售最高單價</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END 客戶分析簡單版資料-->
+
+            <!-- 圖表分析-->
+            <section class="statistic-chart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="title-5 m-b-35">圖表分析</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <!-- 年齡分析-->
+                            <div class="chart-percent-3">
+                                <h3 class="title-3 m-b-30">客戶年齡分析</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="percent-chart11"></canvas>
+                                    <div id="chartjs-tooltip">
+                                        <table></table>
+                                    </div>
+                                </div>
+                                <div class="chart-info">
+                                    <div class="chart-note">
+                                        <span class="dot dot--one"></span>
+                                        <span><br>21～30歲</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--two"></span>
+                                        <span><br>31～40歲</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--three"></span>
+                                        <span><br>41～50歲</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--four"></span>
+                                        <span><br>51～60歲</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--five"></span>
+                                        <span><br>61歲以上</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END 年齡分析-->
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <!-- CHART-->
+                            <div class="statistic-chart-2">
+                                <h3 class="title-3 m-b-30">當月客戶各產品銷售數量</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="widgetChart15"></canvas>
+                                </div>
+                                <div class="statistic-chart-2-note">
+                                    <span>* 總計十二樣產品</span><br>
+                                    <span>* 按照產品編號排列</span><br>
+                                    <span>* 各分店有所不同</span>
+                                </div>
+                            </div>
+                            <!-- END CHART-->
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <!-- 優惠券使用率-->
+                            <div class="chart-percent-2">
+                                <h3 class="title-3 m-b-30">優惠券使用率</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="percent-chart13"></canvas>
+                                    <div id="chartjs-tooltip">
+                                        <table></table>
+                                    </div>
+                                </div>
+                                <div class="chart-info">
+                                    <div class="chart-note">
+                                        <span class="dot dot--one"></span>
+                                        <span>已使用</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--two"></span>
+                                        <span>未使用</span>
+                                    </div>
+                                </div>
+                                <div class="statistic-chart-2-note">
+                                    <span>* 計算單位為%</span>
+                                </div>
+                            </div>
+                            <!-- END 優惠券使用率-->
+                        </div>
+                    </div>
+                </div> 
+            </section>
+
+            <section class="statistic-chart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <!-- 職業分析-->
+                            <div class="statistic-chart-2">
+                                <h3 class="title-3 m-b-30">當月消費客戶職業分析</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="widgetChart16"></canvas>
+                                </div>
+                                <div class="statistic-chart-2-note">
+                                    <span>* 無特定指定職業</span><br>
+                                    <span>* 根據每月<u>不同消費者及不同店家</u>有所變動</span><br>
+                                    <span>* 包含新舊客戶</span>
+                                </div>
+                            </div>
+                            <!-- END 職業分析-->
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <!-- 產品偏好理由-->
+                            <div class="chart-percent-3">
+                                <h3 class="title-3 m-b-30">客戶偏好產品特色分析</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="percent-chart12"></canvas>
+                                    <div id="chartjs-tooltip">
+                                        <table></table>
+                                    </div>
+                                </div>
+                                <div class="chart-info">
+                                    <div class="chart-note">
+                                        <span class="dot dot--one"></span>
+                                        <span><br>氣囊包覆</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--two"></span>
+                                        <span><br>溫感熱敷</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--three"></span>
+                                        <span><br>平躺功能</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--four"></span>
+                                        <span><br>手機連結</span>
+                                    </div>
+                                    <div class="chart-note">
+                                        <span class="dot dot--four"></span>
+                                        <span><br>其他</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END 產品偏好理由-->
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            <!-- CHART-->
+                            <div class="statistic-chart-2">
+                                <h3 class="title-3 m-b-30">客戶透過何種管道得知本公司</h3>
+                                <div class="chart-wrap">
+                                    <canvas id="widgetChart17"></canvas>
+                                </div>
+                                <div class="statistic-chart-2-note">
+                                    <span>* 無特定指定管道</span><br>
+                                    <span>* 根據每月<u>不同消費者及不同店家</u>有所變動</span><br>
+                                    <span>* 僅列出較為多數的選項</span>
+                                </div>
+                            </div>
+                            <!-- END CHART-->
+                        </div>
+                    </div>
+                </div> 
+            </section>
+            <!-- END 圖表分析-->
+
+            
+
+            <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2023 劉建昱資訊管理株式會社</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
