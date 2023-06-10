@@ -14,3 +14,12 @@ def sales_view(request):
 
 def salesindex_view(request):
     return render(request, 'salesindex.html')
+
+def customer_view(request):
+    return render(request, 'customer.html')
+def customer1_view(request):
+    return render(request, 'customer1.html')
+def customer2_view(request):
+    return render(request, 'customer2.html')
+def customer3_view(request):
+    return render(request, 'customer3.html')
