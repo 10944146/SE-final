@@ -84,7 +84,7 @@ class Salesperson(models.Model):
     SID = models.CharField(max_length=20)
     SName=models.CharField(max_length=20,null=True)
     SQ = models.IntegerField()
-    SR = models.DecimalField(max_digits=10, decimal_places=2)
+    SR = models.IntegerField()
     STQ = models.IntegerField()
 
     # def __str__(self):

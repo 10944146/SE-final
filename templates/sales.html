@@ -36,7 +36,45 @@
     <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
 
 </head>
-
+<script>
+    window.onload = function() {
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var salesperson = urlParams.get('salesperson');
+    
+        // 更新页面标题为读取到的 SName 数据
+        document.getElementById("salespersonTitle").textContent = "業務員概況分析：" + salesperson;
+    
+        // 使用 AJAX 请求从服务器获取销售人员的数据
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get-salesperson-data?salesperson=' + salesperson, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var salespersonData = JSON.parse(xhr.responseText);
+                // 客戶回報率數值轉換
+                var srValue = parseInt(salespersonData.SR);
+                //客戶回報率
+                document.getElementById("salespersonSR").textContent = srValue + "%";
+    
+                // 業績達成率計算
+                var achievementRate = salespersonData.achievement_rate;
+                document.getElementById("achievementRate").textContent = achievementRate + "%";
+            }
+        };
+        xhr.send();
+    };
+          
+    function redirectToSales() {
+        var selectElement = document.getElementById("who");
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var selectedSalesperson = selectedOption.text;
+        window.location.href = "/salesindex/sales.html?salesperson=" + selectedSalesperson;
+    }
+    </script>
+    
+    
+    
+    
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
@@ -71,7 +109,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{% url 'salesindex' %}">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>業務員</a>
                             </li>
@@ -270,22 +308,6 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
-                                {% comment %} <div class="dropdown"> {% endcomment %}
-                                    {% comment %} <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        選擇業務員
-                                    </button> {% endcomment %}
-                                    {% comment %} <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">                                        {% endcomment %}
-                                         {% comment %} {% for salesperson in salespersons %}
-                                        <a class="dropdown-item" href="#">{{ salesperson.SName }}</a>
-                                        {% endfor %} {% endcomment %}
-                                    {% comment %} </div> {% endcomment %}
-                                {% comment %} </div> {% endcomment %}
-                                <select id="who" class="who">
-                                    <option>----選擇業務員----</option>
-                                    {% for salesperson in salespersons %}
-                                        <option value= {{ salesperson.SName }}>{{ salesperson.SName }}</option>
-                                    {% endfor %}
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -313,18 +335,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">業務員概況分析</h3>
+                            <h3 class="title-5 m-b-35" id="salespersonTitle">{{ salesperson.SName }}</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">{{salesperson.SR}}</h2>
+                                <h2 class="number" id="salespersonSR">{{ salesperson.SR }}%</h2>
                                 <span class="desc">客戶回報率</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
@@ -337,12 +359,12 @@
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">50%</h2>
+                                <h2 class="number" id="achievementRate">{{ achievement_rate}}%</h2>
                                 <span class="desc">業績達成率</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
                                 </div>
-                            </div>
+                            </div>    
                         </div>
                     </div>
                 </div>
@@ -418,26 +440,6 @@
     <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
     <script src="{% static 'vendor/chartjs/Chart.bundle.min.js' %}"></script>
     <script src="{% static 'vendor/select2/select2.min.js' %}">
-    </script>
-    <script>
-        // 获取下拉菜单元素
-        var dropdownMenu = document.getElementById("dropdownMenu");
-
-        // 获取下拉菜单项的集合
-        var dropdownItems = dropdownMenu.getElementsByClassName("dropdown-item");
-
-        // 遍历下拉菜单项，为每个菜单项添加点击事件监听器
-        for (var i = 0; i < dropdownItems.length; i++) {
-            dropdownItems[i].addEventListener("click", function() {
-                // 获取点击的菜单项的文本内容
-                var selectedValue = this.innerText;
-
-                // 将选中的值显示在按钮上
-                var dropdownButton = document.getElementById("dropdownMenuButton");
-                dropdownButton.innerText = selectedValue;
-            });
-        }
-
     </script>
     <!-- Main JS-->
     <script src="{% static 'js/main.js' %}"></script>

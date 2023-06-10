@@ -19,11 +19,16 @@ from finalapp import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('sales/', views.sales_view, name='sales.html'),
+    # path('sales/', views.sales, name='sales.html'),
     path('customer/', views.customer_view, name='customer.html'),
     path('customer1/', views.customer1_view, name='customer1.html'),
     path('customer2/', views.customer2_view, name='customer2.html'),
     path('customer3/', views.customer3_view, name='customer3.html'),
     path('salesindex/', views.salesindex_view, name='salesindex.html'),
+    path('salesindex/', views.salesindex, name='salesindex.html'),
+    path('salesindex/sales.html', views.sales, name='sales'),
+    path('salesindex/', views.salesindex_view, name='salesindex'),
+    path('get-salesperson-data', views.get_salesperson_data, name='get_salesperson_data'),
 ]
+
 
