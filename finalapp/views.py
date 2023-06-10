@@ -38,11 +38,29 @@ def customer3_view(request):
 def get_salesperson_data(request):
     salesperson_name = request.GET.get('salesperson')
     salesperson = Salesperson.objects.get(SName=salesperson_name)
+
+    max_value = max(salesperson.SM1, salesperson.SM2, salesperson.SM3)
+
+    if max_value == salesperson.SM1:
+        max_name = "經濟實惠型"
+    elif max_value == salesperson.SM2:
+        max_name = "實用按摩型"
+    elif max_value == salesperson.SM3:
+        max_name = "高級豪華型"
+    else:
+        max_name = ""
+
     achievement_rate = (salesperson.SQ / salesperson.STQ) * 100
 
     data = {
         'SR': str(salesperson.SR),
         'SQ': str(salesperson.SQ),
-        'achievement_rate': format(achievement_rate, '.2f')
+        'achievement_rate': format(achievement_rate, '.2f'),
+        'max_name': max_name,
+        'SARR': str(salesperson.SARR),
+        'SLE': str(salesperson.SLE),
+        'SM1': str(salesperson.SM1),
+        'SM2': str(salesperson.SM2),
+        'SM3': str(salesperson.SM3)
     }
     return JsonResponse(data)

@@ -86,6 +86,11 @@ class Salesperson(models.Model):
     SQ = models.IntegerField()
     SR = models.IntegerField()
     STQ = models.IntegerField()
+    SM1= models.IntegerField(null=True)
+    SM2= models.IntegerField(null=True)
+    SM3= models.IntegerField(null=True)
+    SARR= models.IntegerField(null=True)
+    SLE= models.IntegerField(null=True)
 
     # def __str__(self):
         #return self.customer_name

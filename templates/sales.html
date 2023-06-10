@@ -41,10 +41,10 @@
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
         var salesperson = urlParams.get('salesperson');
-    
+      
         // 更新页面标题为读取到的 SName 数据
         document.getElementById("salespersonTitle").textContent = "業務員概況分析：" + salesperson;
-    
+      
         // 使用 AJAX 请求从服务器获取销售人员的数据
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/get-salesperson-data?salesperson=' + salesperson, true);
@@ -53,17 +53,102 @@
                 var salespersonData = JSON.parse(xhr.responseText);
                 // 客戶回報率數值轉換
                 var srValue = parseInt(salespersonData.SR);
-                //客戶回報率
+                // 客戶回報率
                 document.getElementById("salespersonSR").textContent = srValue + "%";
-    
+      
                 // 業績達成率計算
                 var achievementRate = salespersonData.achievement_rate;
                 document.getElementById("achievementRate").textContent = achievementRate + "%";
+      
+                // 最多賣出的類型
+                var maxName = salespersonData.max_name;
+                document.getElementById("maxName").textContent = maxName;
+      
+                // 出缺勤比率圖表
+                var ctx = document.getElementById("doughutCharta");
+                if (ctx) {
+                    ctx.height = 150;
+        
+                    var sarrValue = salespersonData.SARR;
+                    var sleValue = salespersonData.SLE;
+        
+                    var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            datasets: [{
+                                data: [sarrValue, sleValue],
+                                backgroundColor: [
+                                    "rgba(255, 153, 18,0.9)",
+                                    "rgba(255, 215,0,0.7)",
+                                ],
+                                hoverBackgroundColor: [
+                                    "rgba(255, 97, 0,0.9)",
+                                    "rgba(255, 227, 132,0.7)",
+                                ]
+                            }],
+                            labels: [
+                                "上班",
+                                "請假"
+                            ]
+                        },
+                        options: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    fontFamily: 'Poppins'
+                                }
+                            },
+                            responsive: true
+                        }
+                    });
+                }
+                // 銷售品項比率圖表
+                var ctx2 = document.getElementById("pieCharta");
+                if (ctx2) {
+                    ctx2.height = 200;
+
+                    var sm1Value = salespersonData.SM1;
+                    var sm2Value = salespersonData.SM2;
+                    var sm3Value = salespersonData.SM3;
+
+                    var myChart2 = new Chart(ctx2, {
+                        type: 'pie',
+                        data: {
+                            datasets: [{
+                                data: [sm1Value, sm2Value, sm3Value],
+                                backgroundColor: [
+                                    "rgba(0, 123, 255,0.9)",
+                                    "rgba(0, 123, 255,0.7)",
+                                    "rgba(0, 123, 255,0.5)"
+                                ],
+                                hoverBackgroundColor: [
+                                    "rgba(0, 123, 255,0.9)",
+                                    "rgba(0, 123, 255,0.7)",
+                                    "rgba(0, 123, 132,0.7)",
+                                    ]
+                                }],
+                                labels: [
+                                    "經濟實惠型",
+                                    "實用按摩型",
+                                    "高級豪華型"
+                                ]
+                            },
+                        options: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    fontFamily: 'Poppins'
+                                }
+                            },
+                            responsive: true
+                        }
+                    });
+                }
             }
         };
         xhr.send();
     };
-          
+         
     function redirectToSales() {
         var selectElement = document.getElementById("who");
         var selectedOption = selectElement.options[selectElement.selectedIndex];
@@ -350,7 +435,7 @@
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">高級豪華型</h2>
+                                <h2 class="number" id="maxName"></h2>
                                 <span class="desc">最多賣出</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-shopping-cart"></i>
@@ -384,7 +469,7 @@
                             <div class="au-card m-b-30" style="height: 400px;">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">出缺勤比率</h3>
-                                    <canvas id="doughutChart" style="height: 150px;"></canvas>
+                                    <canvas id="doughutCharta" style="height: 150px;"></canvas>
                                 </div>
                                
                             </div>
@@ -393,7 +478,7 @@
                             <div class="au-card m-b-30" style="height: 400px;">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">銷售品項比率</h3>
-                                    <canvas id="pieChart" style="height: 275px;"></canvas>
+                                    <canvas id="pieCharta" style="height: 275px;"></canvas>
                                 </div>
                             </div>
                         </div>
