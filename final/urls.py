@@ -29,6 +29,8 @@ urlpatterns = [
     path('salesindex/sales.html', views.sales, name='sales'),
     path('salesindex/', views.salesindex_view, name='salesindex'),
     path('get-salesperson-data', views.get_salesperson_data, name='get_salesperson_data'),
+    path('branch/', views.branch, name='branch.html'),
+    path('branch/', views.branch, name='branch'),
 ]
 
 
