@@ -37,6 +37,7 @@
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         try {
@@ -84,12 +85,14 @@
                 }
               });
             }
+
+            
         
           } catch (error) {
             console.log(error);
           }
         
-        })(jQuery);
+        })(jQuery);  
 </script>
 
 <body class="animsition">
@@ -491,16 +494,85 @@
                             <!-- END CHART-->
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <!-- 優惠券使用率-->
+                            <!-- 新舊客戶佔比-->
                             <div class="chart-percent-2">
                                 <h3 class="title-3 m-b-30">新舊客戶佔比 </h3>
                                 <div class="chart-wrap">
-                                    <canvas id="percent-chart2"></canvas>
+                                    <canvas id="PCA"></canvas>
                                     <div id="chartjs-tooltip">
                                         <table></table>
                                     </div>
                                 </div>
-                                <div class="chart-info">
+                                <script>
+                                    try {
+
+                                        // 新舊客戶佔比
+                                        var ctx = document.getElementById("PCA");
+                                        if (ctx) {
+                                          ctx.height = 209;
+                                          var myChart = new Chart(ctx, {
+                                            type: 'doughnut',
+                                            data: {
+                                              datasets: [
+                                                {
+                                                  label: "新舊客戶佔比",
+                                                  data: [8, 1],
+                                                  backgroundColor: [
+                                                    '#0066CC',
+                                                    '#EA7500'
+                                                  ],
+                                                  hoverBackgroundColor: [
+                                                    '#0066CC',
+                                                    '#EA7500'
+                                                  ],
+                                                  borderWidth: [
+                                                    0, 0
+                                                  ],
+                                                  hoverBorderColor: [
+                                                    'transparent',
+                                                    'transparent'
+                                                  ]
+                                                }
+                                              ],
+                                              labels: [
+                                                '新客戶',
+                                                '舊客戶'
+                                              ]
+                                            },
+                                            options: {
+                                              maintainAspectRatio: false,
+                                              responsive: true,
+                                              cutoutPercentage: 87,
+                                              animation: {
+                                                animateScale: true,
+                                                animateRotate: true
+                                              },
+                                              legend: {
+                                                display: false,
+                                                position: 'bottom',
+                                                labels: {
+                                                  fontSize: 14,
+                                                  fontFamily: "Poppins,sans-serif"
+                                                }
+                                    
+                                              },
+                                              tooltips: {
+                                                titleFontFamily: "Poppins",
+                                                xPadding: 15,
+                                                yPadding: 10,
+                                                caretPadding: 0,
+                                                bodyFontSize: 16,
+                                              }
+                                            }
+                                          });
+                                        }
+                                    
+                                      } catch (error) {
+                                        console.log(error);
+                                      }
+                                    
+                                </script>
+                                {% comment %} <div class="chart-info">
                                     <div class="chart-note">
                                         <span class="dot dot--one"></span>
                                         <span>舊客戶</span>
@@ -512,9 +584,9 @@
                                 </div>
                                 <div class="statistic-chart-2-note">
                                     <span>* 計算單位為%</span>
-                                </div>
+                                </div> {% endcomment %}
                             </div>
-                            <!-- END 優惠券使用率-->
+                            <!-- END 新舊客戶佔比-->
                         </div>
                         <div class="col-xl-8">
                             <!-- RECENT REPORT 2-->
