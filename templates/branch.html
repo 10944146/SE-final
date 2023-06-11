@@ -37,6 +37,60 @@
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        try {
+
+            // single bar chart
+            var ctx = document.getElementById("SBCharta");
+            if (ctx) {
+              ctx.height = 150;
+              var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: ["陳大賀", "汪曉明", "陳一新"],
+                  datasets: [
+                    {
+                      label: "本月銷售總量",
+                      data: [10, 7, 8],
+                      borderColor: "rgba(0, 123, 255, 0.9)",
+                      borderWidth: "0",
+                      backgroundColor: "rgba(0, 123, 255, 0.5)"
+                    }
+                  ]
+                },
+                options: {
+                  legend: {
+                    position: 'top',
+                    labels: {
+                      fontFamily: 'Poppins'
+                    }
+        
+                  },
+                  scales: {
+                    xAxes: [{
+                      ticks: {
+                        fontFamily: "Poppins"
+        
+                      }
+                    }],
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true,
+                        fontFamily: "Poppins"
+                      }
+                    }]
+                  }
+                }
+              });
+            }
+        
+          } catch (error) {
+            console.log(error);
+          }
+        
+        })(jQuery);
+</script>
 
 <body class="animsition">
     <div class="page-wrapper">
@@ -415,10 +469,12 @@
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
                                     <h3 class="title-2 m-b-40">業務員當月各產品銷售台數</h3>
-                                    <canvas id="singelBarCharta"></canvas>
+                                    <canvas id="SBCharta"></canvas>
                                 </div>
                             </div>
                         </div>
+                        
+                        
                         <div class="col-md-6 col-lg-4">
                             <!-- CHART-->
                             <div class="statistic-chart-2">

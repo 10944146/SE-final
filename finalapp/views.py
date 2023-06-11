@@ -68,3 +68,6 @@ def get_salesperson_data(request):
 def branch(request):
     return render(request, 'branch.html')
 
+def branch_view(request):
+    return render(request, 'branch.html')
+
