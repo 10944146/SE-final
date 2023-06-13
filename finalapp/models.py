@@ -23,6 +23,7 @@ class purchase(models.Model):
     PDate = models.DateField(null=True)
     MFuction= models.CharField(max_length=100,null=True)
     PAmount = models.IntegerField()
+    MClass = models.CharField(max_length=20)
 
     # def __str__(self):
         #return self.customer_name
@@ -35,6 +36,7 @@ class SalesDetail(models.Model):
     CAge_range = models.CharField(max_length=20,null=True)
     SAmount = models.IntegerField()
     SPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    MClass = models.CharField(max_length=20)
 
     # def __str__(self):
         #return self.customer_name
@@ -48,6 +50,7 @@ class MassageChair(models.Model):
     MState = models.BooleanField()
     MFuction= models.CharField(max_length=100,null=True)
     MAmount = models.IntegerField()
+    MClass = models.CharField(max_length=20)
 
     # def __str__(self):
         #return self.customer_name
@@ -58,6 +61,7 @@ class EXM(models.Model):
     MNAME = models.CharField(max_length=100,null=True)
     MFuction= models.CharField(max_length=100,null=True)
     EXMAmount = models.IntegerField(null=True)
+    MClass = models.CharField(max_length=20)
 
     # def __str__(self):
         #return self.customer_name

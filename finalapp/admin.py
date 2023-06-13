@@ -7,13 +7,13 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display=('CID','CName','CStage','CAge_range','CGender','COccupation_category','CDemand_description','CHow','BID','CMON')
 
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ('MID', 'MNAME','PCost','PDate','MFuction', 'PAmount')
+    list_display = ('MID', 'MNAME','PCost','PDate','MFuction', 'PAmount','MClass')
 
 class SalesDetailAdmin(admin.ModelAdmin):
-    list_display = ('MID', 'MNAME', 'SPrice', 'CID', 'CAge_range', 'SAmount')
+    list_display = ('MID', 'MNAME', 'SPrice', 'CID', 'CAge_range', 'SAmount','MClass')
 
 class MassageChairAdmin(admin.ModelAdmin):
-    list_display = ('MID', 'MNAME', 'MCost', 'MPrice','MState', 'MFuction', 'MAmount')
+    list_display = ('MID', 'MNAME', 'MCost', 'MPrice','MState', 'MFuction', 'MAmount','MClass')
     
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('BID','BName', 'SID','SMON', 'SAc',"STc",'SNew','SOld','SOSALE','SNSALE')
@@ -37,7 +37,7 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_display = ['SID', 'date', 'SW', 'SG', 'SL']
 
 class EXMAdmin(admin.ModelAdmin):
-    list_display = ['MID', 'MNAME', 'MFuction', 'EXMAmount']
+    list_display = ['MID', 'MNAME', 'MFuction', 'EXMAmount','MClass']
 
 # Register your models here.
 admin.site.register(customer,CustomerAdmin)
