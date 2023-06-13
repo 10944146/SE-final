@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Salesperson, Branch
+from .models import Salesperson, Branch,SalesDetail
 from django.http import JsonResponse
 
 
@@ -70,4 +70,3 @@ def branch(request):
 
 def branch_view(request):
     return render(request, 'branch.html')
-

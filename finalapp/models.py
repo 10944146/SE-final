@@ -3,26 +3,25 @@ from django.db import models
 class customer(models.Model):
     CID = models.CharField(max_length=20, unique=True)
     CName = models.CharField(max_length=100)
-    CEmail = models.EmailField()
     CStage = models.CharField(max_length=50)
-    CActrecord = models.TextField(blank=True)
-    CStartdate = models.DateField()
-    CDealdate = models.DateField(null=True, blank=True)
-    SID = models.CharField(max_length=20)
-    CDemand_description = models.TextField(blank=True)
-    CSpecial_requests = models.TextField(blank=True)
     CAge_range = models.CharField(max_length=20)
+    CGender = models.CharField(max_length=2,null=True)
     COccupation_category = models.CharField(max_length=50)
+    CDemand_description = models.TextField(blank=True)
+    CHow = models.CharField(max_length=20,null=True)
+    BID = models.CharField(max_length=20,null=True)
+    CMON = models.CharField(max_length=20,null=True)
 
     # def __str__(self):
         #return self.customer_name
     #讓object預設回傳
 
 class purchase(models.Model):
-    PID = models.CharField(max_length=20)
-    BID = models.CharField(max_length=20)
     MID = models.CharField(max_length=20)
+    MNAME = models.CharField(max_length=100,null=True)
     PCost = models.DecimalField(max_digits=10, decimal_places=2)
+    PDate = models.DateField(null=True)
+    MFuction= models.CharField(max_length=100,null=True)
     PAmount = models.IntegerField()
 
     # def __str__(self):
@@ -30,17 +29,12 @@ class purchase(models.Model):
     #讓object預設回傳
 
 class SalesDetail(models.Model):
-    BID = models.CharField(max_length=20)
-    SID = models.CharField(max_length=20)
     CID = models.CharField(max_length=20)
     MID = models.CharField(max_length=20)
+    MNAME = models.CharField(max_length=100,null=True)
+    CAge_range = models.CharField(max_length=20,null=True)
     SAmount = models.IntegerField()
     SPrice = models.DecimalField(max_digits=10, decimal_places=2)
-    SDiscount = models.DecimalField(max_digits=10, decimal_places=2)
-    SPay = models.DecimalField(max_digits=10, decimal_places=2)
-    SDate = models.DateField()
-    SRepurchase = models.BooleanField()
-    SPayment = models.CharField(max_length=50)
 
     # def __str__(self):
         #return self.customer_name
@@ -48,27 +42,45 @@ class SalesDetail(models.Model):
 
 class MassageChair(models.Model):
     MID = models.CharField(max_length=20)
-    MState = models.CharField(max_length=50)
-    PID = models.CharField(max_length=20)
-    BID = models.CharField(max_length=20)
-    MPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    MNAME = models.CharField(max_length=100,null=True)
     MCost = models.DecimalField(max_digits=10, decimal_places=2)
+    MPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    MState = models.BooleanField()
+    MFuction= models.CharField(max_length=100,null=True)
     MAmount = models.IntegerField()
-    MClass = models.CharField(max_length=50)
 
     # def __str__(self):
         #return self.customer_name
     #讓object預設回傳
+
+class EXM(models.Model):
+    MID = models.CharField(max_length=20)
+    MNAME = models.CharField(max_length=100,null=True)
+    MFuction= models.CharField(max_length=100,null=True)
+    EXMAmount = models.IntegerField(null=True)
+
+    # def __str__(self):
+        #return self.customer_name
+    #讓object預設回傳
+    
 
 class Branch(models.Model):
     BID = models.CharField(max_length=20)
     BName=models.CharField(max_length=20,null=True)
     SID = models.CharField(max_length=20)
-    SAc = models.IntegerField()
+    SMON = models.CharField(max_length=20,null=True)
+    SAc = models.IntegerField(null=True)
+    STc = models.IntegerField(null=True)
+    SNew = models.IntegerField(null=True)
+    SOld = models.IntegerField(null=True)
+    SOSALE = models.IntegerField(null=True)
+    SNSALE = models.IntegerField(null=True)
+
 
     # def __str__(self):
         #return self.customer_name
     #讓object預設回傳
+
 
 class KPI(models.Model):
     KID = models.CharField(max_length=20, primary_key=True)
