@@ -32,7 +32,7 @@ urlpatterns = [
     path('branch/', views.branch, name='branch.html'),
     path('branch/', views.branch_view, name='branch'),
     path('branch/<str:branch>/', views.branch_view, name='branch'),
-  
+    path('branch/<str:branch>/', views.branch_view, name='branch_view'),
 ]
 
 

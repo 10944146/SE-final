@@ -12,7 +12,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>分店資料-中壢中原店</title>
+    <title>分店資料-{{ branch_name }}</title>
 
     <!-- Fontfaces CSS-->
     <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
@@ -282,12 +282,12 @@
                                     <span class="au-breadcrumb-span">您位於：</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item active">
-                                            <a href="#">客戶</a>
+                                            <a href="#">分店</a>
                                         </li>
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">中壢中原店</li>
+                                        <li class="list-inline-item">{{ branch_name }}</li>
                                     </ul>
                                 </div>
                                 {% comment %} <form class="au-form-icon--sm" action="" method="post">
@@ -341,11 +341,11 @@
                                 // single bar chart
                                 var ctx = document.getElementById("SBCharta");
                                 if (ctx) {
-                                    ctx.height = 150;
+                                    ctx.height = 125;
                                     var myChart = new Chart(ctx, {
                                         type: 'bar',
                                         data: {
-                                            labels: {{ sids|safe }},
+                                            labels: {{ names|safe }},
                                             datasets: [
                                                 {
                                                     label: "本月銷售量",
@@ -400,7 +400,7 @@
                                       
                                         var ctx = document.getElementById("pieChartA");
                                         if (ctx) {
-                                          ctx.height = 200;
+                                          ctx.height = 100;
                                           var myChart = new Chart(ctx, {
                                             type: 'pie',
                                             data: {
@@ -446,6 +446,99 @@
                             </div>
                             <!-- END CHART-->
                         </div>
+                        <div class="col-lg-8">
+                            <div class="au-card m-b-30">
+                                <div class="au-card-inner">
+                                    <h3 class="title-2 m-b-40">業務員當月銷售額</h3>
+                                    <canvas id="team-chartA"></canvas>
+                                </div>
+                                <script>
+                                    try {
+                                        var ctx = document.getElementById("team-chartA");
+                                        if (ctx) {
+                                            ctx.height = 100;
+                                            var myChart = new Chart(ctx, {
+                                                type: 'line',
+                                                data: {
+                                                    labels: {{ names|safe }},
+                                                    type: 'line',
+                                                    defaultFontFamily: 'Poppins',
+                                                    datasets: [{
+                                                        data: {{ snsales_array|safe }},
+                                                        label: "當月銷售額",
+                                                        backgroundColor: 'rgba(0,103,255,.15)',
+                                                        borderColor: 'rgba(0,103,255,0.5)',
+                                                        borderWidth: 3.5,
+                                                        pointStyle: 'circle',
+                                                        pointRadius: 5,
+                                                        pointBorderColor: 'transparent',
+                                                        pointBackgroundColor: 'rgba(0,103,255,0.5)',
+                                                    }]
+                                                },
+                                                options: {
+                                                    responsive: true,
+                                                    tooltips: {
+                                                        mode: 'index',
+                                                        titleFontSize: 12,
+                                                        titleFontColor: '#000',
+                                                        bodyFontColor: '#000',
+                                                        backgroundColor: '#fff',
+                                                        titleFontFamily: 'Poppins',
+                                                        bodyFontFamily: 'Poppins',
+                                                        cornerRadius: 3,
+                                                        intersect: false,
+                                                    },
+                                                    legend: {
+                                                        display: false,
+                                                        position: 'top',
+                                                        labels: {
+                                                            usePointStyle: true,
+                                                            fontFamily: 'Poppins',
+                                                        },
+                                                    },
+                                                    scales: {
+                                                        xAxes: [{
+                                                            display: true,
+                                                            gridLines: {
+                                                                display: false,
+                                                                drawBorder: false
+                                                            },
+                                                            scaleLabel: {
+                                                                display: false,
+                                                                labelString: 'Month'
+                                                            },
+                                                            ticks: {
+                                                                fontFamily: "Poppins"
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            display: true,
+                                                            gridLines: {
+                                                                display: false,
+                                                                drawBorder: false
+                                                            },
+                                                            scaleLabel: {
+                                                                display: true,
+                                                                labelString: 'Value',
+                                                                fontFamily: "Poppins"
+                                                            },
+                                                            ticks: {
+                                                                fontFamily: "Poppins"
+                                                            }
+                                                        }]
+                                                    },
+                                                    title: {
+                                                        display: false,
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    } catch (error) {
+                                        console.log(error);
+                                    }
+                                </script>
+                            </div>
+                        </div>
                         <div class="col-md-6 col-lg-4">
                             <!-- 新舊客戶佔比-->
                             <div class="chart-percent-2">
@@ -460,7 +553,7 @@
                                     try {
                                         var ctx = document.getElementById("PCA");
                                         if (ctx) {
-                                            ctx.height = 209;
+                                            ctx.height = 225;
                                             var myChart = new Chart(ctx, {
                                                 type: 'doughnut',
                                                 data: {
@@ -513,12 +606,52 @@
                             </div>
                             <!-- END 新舊客戶佔比-->
                         </div>
+                        
+                    </div>
+                </div> 
+            </section>
+
+            <section class="statistic-chart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- TOP CAMPAIGN-->
+                            <div class="top-campaign">
+                                <h3 class="title-3 m-b-30">各月銷售量與前年同期比較</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-top-campaign">
+                                        <tbody>
+                                            <tr>
+                                                <td>January</td>
+                                                <td class="howmuch">{{ diff_2 }}台</td>
+                                            </tr>
+                                            <tr>
+                                                <td>February</td>
+                                                <td class="howmuch">{{ diff_3 }}台</td>
+                                            </tr>
+                                            <tr>
+                                                <td>March</td>
+                                                <td class="howmuch">{{ diff_4 }}台</td>
+                                            </tr>
+                                            <tr>
+                                                <td>April</td>
+                                                <td class="howmuch">{{ diff_5 }}台</td>
+                                            </tr>
+                                            <tr>
+                                                <td>May</td>
+                                                <td class="howmuch">{{ diff_6 }}台</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                            <!-- END TOP CAMPAIGN-->
+                        </div>
                         <div class="col-xl-8">
                             <!-- RECENT REPORT 2-->
                             <div class="recent-report2">
-                                <h3 class="title-3">上半年銷售金額</h3>
-                                <p>Data3: {{ data3 }}</p>
-                                <p>Data4: {{ data4 }}</p>
+                                <h3 class="title-3">各月銷售額與前年同期比較</h3>
                                 <div class="chart-info">
                                     <div class="chart-info__left">
                                         <div class="chart-note">
@@ -536,33 +669,30 @@
                                         const bd_brandService2 = 'rgba(0,173,95,0.9)';
                                         const brandProduct2 = 'rgba(0,181,233,0.2)';
                                         const brandService2 = 'rgba(0,173,95,0.2)';
-                                
-                                        var data3 =  {{ data3 }}
-                                        var data4 =  {{ data4 }}
                                     
                                         var ctx = document.getElementById("recent-rep2-chartA");
                                         if (ctx) {
-                                            ctx.height = 230;
+                                            ctx.height = 200;
                                             var myChart = new Chart(ctx, {
                                                 type: 'line',
                                                 data: {
                                                     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
                                                     datasets: [
                                                       {
-                                                        label: 'My First dataset',
+                                                        label: '2022年度',
                                                         backgroundColor: brandService2,
                                                         borderColor: bd_brandService2,
                                                         pointHoverBackgroundColor: '#fff',
-                                                        borderWidth: 0,
-                                                        data: data3
+                                                        borderWidth: 3,
+                                                        data:{{ data3 }}
                                                       },
                                                       {
-                                                        label: 'My Second dataset',
+                                                        label: '2023年度',
                                                         backgroundColor: brandProduct2,
                                                         borderColor: bd_brandProduct2,
                                                         pointHoverBackgroundColor: '#fff',
-                                                        borderWidth: 0,
-                                                        data: data4
+                                                        borderWidth:3,
+                                                        data:{{ data4 }}
                                                       }
                                                     ]
                                                   },
@@ -618,54 +748,6 @@
                                 </script>
                             </div>
                             <!-- END RECENT REPORT 2             -->
-                        </div>
-                    </div>
-                </div> 
-            </section>
-
-            <section class="statistic-chart">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <!-- TOP CAMPAIGN-->
-                            <div class="top-campaign">
-                                <h3 class="title-3 m-b-30">當月與上月銷售額差額比率</h3>
-                                <div class="table-responsive">
-                                    <table class="table table-top-campaign">
-                                        <tbody>
-                                            <tr>
-                                                <td>january</td>
-                                                <td>+20%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>February</td>
-                                                <td>+15%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>March</td>
-                                                <td>-23%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>April</td>
-                                                <td>-16%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>May</td>
-                                                <td>+40%</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- END TOP CAMPAIGN-->
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="au-card m-b-30">
-                                <div class="au-card-inner">
-                                    <h3 class="title-2 m-b-40">各產品當月銷售量</h3>
-                                    <canvas id="team-chart"></canvas>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div> 

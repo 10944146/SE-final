@@ -73,13 +73,39 @@ def branch(request):
 
 
 def branch_view(request, branch):
-    branches = Branch.objects.filter(BID=branch, SMON='5')
+    name_mapping = {
+        'S001': '潘於新',
+        'S002': '江姜好',
+        'S003': '邱汪明',
+        'S004': '邱曉愈',
+        'S005': '劉心瑀',
+        'S006': '劉心成',
+        'S007': '李冠郁',
+        'S008': '黃盛餘',
+        'S009': '黃新衣',
+        'S010': '陳大賀',
+        'S011': '汪曉明',
+        'S012': '陳一新',
+    }
+
+    branches = list(Branch.objects.filter(BID=branch, SMON='5').order_by('SID'))
+    
     sids = []
     sacs = []
+    snsales = []
     for branch_obj in branches:
-        sids.append(branch_obj.SID)
+        sid = branch_obj.SID
+        sids.append(sid)
         sacs.append(branch_obj.SAc)
+        snsales.append(branch_obj.SNSALE)
     
+    names = [name_mapping.get(sid, '') for sid in sids]
+    
+    if branch_obj:
+        branch_name = branch_obj.BName
+    else:
+        branch_name = ""
+        
     sac_sum = sum(sacs)
     stc_sum = Branch.objects.filter(BID=branch, SMON='5').aggregate(stc_sum=Sum('STc'))['stc_sum']
 
@@ -95,14 +121,19 @@ def branch_view(request, branch):
     if branch_obj:
         new_sum = branch_obj.SNew
         old_sum = branch_obj.SOld
-    data3=[]
-    data4=[]
     data3 = list(profit.objects.filter(BID=branch, year=2022).values_list('one', 'two', 'three', 'four', 'five', 'six').first())
     data4 = list(profit.objects.filter(BID=branch, year=2023).values_list('one', 'two', 'three', 'four', 'five', 'six').first())
 
+    diff_6 = data4[5] - data3[5] + 12
+    diff_5 = data4[4] - data3[4]
+    diff_4 = data4[3] - data3[3]
+    diff_3 = data4[2] - data3[2]
+    diff_2 = data4[1] - data3[1]
+
     context = {
         'branch_code': branch,
-        'sids': sids,
+        'names': names,
+        'branch_name': branch_name,
         'sacs': sacs,
         'achieved_percent': achieved_percent,
         'not_achieved_percent': not_achieved_percent,
@@ -110,12 +141,15 @@ def branch_view(request, branch):
         'old_percent': old_sum / (new_sum + old_sum),
         'data3': data3,
         'data4': data4,
+        'diff_6': diff_6,
+        'diff_5': diff_5,
+        'diff_4': diff_4,
+        'diff_3': diff_3,
+        'diff_2': diff_2,
+        'sids_array': sids,
+        'snsales_array': snsales,
     }
 
     return render(request, 'branch.html', context)
-
-
-
-
 
 
