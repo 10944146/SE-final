@@ -1,12 +1,31 @@
 from django.shortcuts import render
-from .models import Salesperson, Branch,profit
+from .models import Salesperson, Branch, profit, customer
 from django.template.defaultfilters import floatformat
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from django.http import JsonResponse
 
 
-
 # Create your views here.
+def company(request):
+    totalthisJuly = Branch.objects.filter(SMON=6).aggregate(totalthisJuly=Sum('SNSALE'))['totalthisJuly']
+    totalpastJuly = Branch.objects.filter(SMON=6).aggregate(totalpastJuly=Sum('SOSALE'))['totalpastJuly']
+    totalthisMay = Branch.objects.filter(SMON=5).aggregate(totalthisMay=Sum('SNSALE'))['totalthisMay']
+    totalpastMay = Branch.objects.filter(SMON=5).aggregate(totalpastMay=Sum('SOSALE'))['totalpastMay']
+    totalthisApril = Branch.objects.filter(SMON=4).aggregate(totalthisApril=Sum('SNSALE'))['totalthisApril']
+    totalpastApril = Branch.objects.filter(SMON=4).aggregate(totalpastApril=Sum('SOSALE'))['totalpastApril']
+    totalthisMarch = Branch.objects.filter(SMON=3).aggregate(totalthisMarch=Sum('SNSALE'))['totalthisMarch']
+    totalpastMarch = Branch.objects.filter(SMON=3).aggregate(totalpastMarch=Sum('SOSALE'))['totalpastMarch']
+    return render(request, 'company.html', {
+            'totalthisJuly': totalthisJuly,
+            'totalpastJuly': totalpastJuly,
+            'totalthisMay': totalthisMay,
+            'totalpastMay': totalpastMay,
+            'totalthisApril': totalthisApril,
+            'totalpastApril': totalpastApril,
+            'totalthisMarch': totalthisMarch,
+            'totalpastMarch': totalpastMarch,
+        }
+    )
 
 def sales(request):
     salesperson = request.GET.get('salesperson')
@@ -28,8 +47,32 @@ def salesindex_view(request):
 def salesindex(request):
     return render(request, 'salesindex.html')
 
+# 先寫死成6月跟中壢中原店 # 後續可根據進入的分店頁面決定BID
 def customer_view(request):
-    return render(request, 'customer.html')
+    Newcustomer = customer.objects.filter(CMON="6", BID="B001").count()
+    Perfer = customer.objects.filter(BID="B001").values('CDemand_description').annotate(count=Count('CDemand_description')).order_by('-count')[0]['CDemand_description']
+    Recommend = customer.objects.filter(BID="B001").values('CHow').annotate(count=Count('CHow')).order_by('-count')[0]['CHow']
+    age1 = customer.objects.filter(CAge_range="20-29", BID="B001").count()
+    age2 = customer.objects.filter(CAge_range="30-39", BID="B001").count()
+    age3 = customer.objects.filter(CAge_range="40-49", BID="B001").count()
+    age4 = customer.objects.filter(CAge_range="50-59", BID="B001").count()
+    age5 = customer.objects.filter(CAge_range="60以上", BID="B001").count()
+    sum = age1 + age2 + age3 + age4 + age5
+    return render(
+        request, 
+        'customer.html', {
+            'Newcustomer': Newcustomer, 
+            'Perfer': Perfer, 
+            'Recommend': Recommend,
+            'age1': age1,
+            'age2': age2,
+            'age3': age3,
+            'age4': age4,
+            'age5': age5,
+            'sum': sum,
+        }
+    )
+
 def customer1_view(request):
     return render(request, 'customer1.html')
 def customer2_view(request):
@@ -152,4 +195,5 @@ def branch_view(request, branch):
 
     return render(request, 'branch.html', context)
 
-
+def chair(request):
+    return render(request, 'chair.html')
