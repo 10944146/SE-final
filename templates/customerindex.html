@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
-
 <html lang="en">
 
 <head>
@@ -12,29 +10,49 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>業務員資料</title>
+    <title>客戶資料－中壢中原店</title>
 
     <!-- Fontfaces CSS-->
-    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/font-awesome-5/css/fontawesome-all.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="{% static 'vendor/bootstrap-4.1/bootstrap.min.css' %}" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="{% static 'vendor/animsition/animsition.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/wow/animate.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/slick/slick.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet" media="all">
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="{% static 'css/theme.css' %}" rel="stylesheet" media="all">
-
+    <link href="css/theme.css" rel="stylesheet" media="all">
+    <style>
+        select.selectstyle{
+            margin-bottom: 2.5rem;
+            padding: 0.5rem;
+            border-radius: 5%;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: #EA7500;
+            color: #ffffff;
+            border: none;
+        }
+        
+        select.selectstyle option{
+            margin-bottom: 2.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            background: #ffffff;
+            color: #EA7500;
+            border: none;
+        }
+    </style>
 </head>
 
 <body class="animsition">
@@ -45,7 +63,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="#">
-                            <img src="{% static 'images/icon/iconla.png' %}" alt="CoolAdmin" />
+                            <img src="images/icon/iconla.png" alt="CoolAdmin" />
                         </a>
                     </div>
                     <div class="header__navbar">
@@ -57,21 +75,21 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="{% url 'branch' branch='B001' %}">中壢中原店</a>
+                                        <a href="#">中壢中原店</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'branch' branch='B002' %}">中壢中大店</a>
+                                        <a href="#">中壢中原店</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'branch' branch='B003' %}">中壢中北店</a>
+                                        <a href="#">中壢中原店</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'branch' branch='B004' %}">中壢原大店</a>
+                                        <a href="#">中壢中原店</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="{% url 'salesindex' %}">
+                                <a href="#">
                                     <i class="fas fa-shopping-basket"></i>
                                     <span class="bot-line"></span>業務員</a>
                             </li>
@@ -84,23 +102,6 @@
                                 <a href="#">
                                     <i class="fas fa-copy"></i>
                                     <span class="bot-line"></span>客戶</a>
-                                <ul class="header3-sub-list list-unstyled">
-                                    <li>
-                                        <a href="customer.html">中壢原大店</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">中壢中興店</a>
-                                    </li>
-                                    <li>
-                                        <a href="customer1.html">中壢中北店</a>
-                                    </li>
-                                    <li>
-                                        <a href="customer2.html">中壢中原店</a>
-                                    </li>
-                                    <li>
-                                        <a href="customer3.html">中壢中大店</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -108,7 +109,7 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                 </div>
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">劉建昱</a>
@@ -117,7 +118,7 @@
                                     <div class="info clearfix">
                                         <div class="image">
                                             <a href="#">
-                                                <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                             </a>
                                         </div>
                                         <div class="content">
@@ -156,7 +157,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="{% static 'images/icon/logo-white.png' %}" alt="CoolAdmin" />
+                            <img src="images/icon/logo-white.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -201,20 +202,6 @@
                             <a href="#">
                                 <i class="fas fa-copy"></i>
                                 <span class="bot-line"></span>客戶</a>
-                            <ul class="header3-sub-list list-unstyled">
-                                <li>
-                                    <a href="customer.html">中壢中原店</a>
-                                </li>
-                                <li>
-                                    <a href="customer1.html">中壢中北店</a>
-                                </li>
-                                <li>
-                                    <a href="customer2.html">中壢中興店</a>
-                                </li>
-                                <li>
-                                    <a href="customer3.html">中壢中大店</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -225,7 +212,7 @@
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">
-                            <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                         </div>
                         <div class="content">
                             <a class="js-acc-btn" href="#">劉建昱</a>
@@ -234,7 +221,7 @@
                             <div class="info clearfix">
                                 <div class="image">
                                     <a href="#">
-                                        <img src="{% static 'images/icon/avatar-01.jpg' %}" alt="John Doe" />
+                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                     </a>
                                 </div>
                                 <div class="content">
@@ -273,7 +260,23 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
-
+                                <div class="au-breadcrumb-left">
+                                    <span class="au-breadcrumb-span">您位於：</span>
+                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                        <li class="list-inline-item active">
+                                            <a href="#">客戶</a>
+                                        </li>
+                                        <li class="list-inline-item seprate">
+                                            <span>/</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <form class="au-form-icon--sm" action="" method="post">
+                                    <input class="au-input--w300 au-input--style2" type="text" placeholder="搜尋 &amp; 尋找...">
+                                    <button class="au-btn--submit2" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -296,61 +299,49 @@
             </section>
             <!-- END WELCOME-->
 
-            <!-- 概況-->
+
+            <!-- 客戶分析簡單版資料-->
             <section class="statistic statistic2">
                 <div class="container">
+                    <select id="mySelect" onchange="redirectToPage()" class="selectstyle">
+                        <option value="">選擇分店</option>
+                        <option value="customer.html">中壢中原店</option>
+                        <option value="customer1.html">中壢中北店</option>
+                        <option value="customer2.html">中壢中興店</option>
+                        <option value="customer3.html">中壢中大店</option>
+                    </select>
                     <div class="row">
-                        <div class="col-md-12">
-                            <form action="/sales" method="GET" id="salesForm">
-                                <div class="au-breadcrumb-content">
-                                    <select id="who" class="who" onchange="redirectToSales()">
-                                        <option>----選擇業務員----</option>
-                                        {% for salesperson in salespersons %}
-                                            <option value="{{ salesperson.SName }}">{{ salesperson.SName }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </form>
-                            <script>
-                                function redirectToSales() {
-                                    var selectElement = document.getElementById("who");
-                                    var selectedOption = selectElement.options[selectElement.selectedIndex];
-                                    var selectedSalesperson = selectedOption.text;
-                                    window.location.href = "./sales.html?salesperson=" + selectedSalesperson;
-                                }
-                            </script>
-                                                                      
-                        </div>
-                    </div>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">業務員概況分析</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">請選擇業務員</h2>
-                                <span class="desc">客戶回報率</span>
+                                <h2 class="number">選擇分店查閱</h2>
+                                <span class="desc">本月新進客戶</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">請選擇業務員</h2>
-                                <span class="desc">最多賣出</span>
+                                <h2 class="number">選擇分店查閱</h2>
+                                <span class="desc">客戶偏好產品</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-shopping-cart"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 col-lg-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--bluegreen">
+                                <h2 class="number">選擇分店查閱</h2>
+                                <span class="desc">客戶最常使用之獲取訊息平台</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">請選擇業務員</h2>
-                                <span class="desc">業績達成率</span>
+                                <h2 class="number">選擇分店查閱</h2>
+                                <span class="desc">本月客戶銷售最高單價</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
                                 </div>
@@ -361,42 +352,42 @@
             </section>
             <!-- END 客戶分析簡單版資料-->
 
-            <!-- STATISTIC CHART-->
+
+            <!-- 圖表分析-->
             <section class="statistic-chart">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h3 class="title-5 m-b-35">圖表分析</h3>
+                            <h3 class="title-5 m-b-35">請選擇分店查閱詳細資料</h3>
                         </div>
                     </div>
+                </div> 
+            </section>
+
+            <section class="statistic-chart">
+                <div class="container">
+
+                </div> 
+            </section>
+            <!-- END 圖表分析-->
+
+            <!-- DATA TABLE-->
+            <section class="p-t-20">
+                <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="title-5 m-b-25">請選擇業務員以查看細部內容</h3>
+                            <h3 class="title-5 m-b-35">客戶資料表</h3>
+                            <h3 class="title-5 m-b-35">請選擇分店查閱詳細資料</h3>
                         </div>
                     </div>
-                    {% comment %} <div class="row">
-                        <div class="col-lg-6">
-                            <div class="au-card m-b-30" style="height: 400px;">
-                                <div class="au-card-inner">
-                                    <h3 class="title-2 m-b-40">出缺勤比率</h3>
-                                    <canvas id="doughutChart" style="height: 150px;"></canvas>
-                                </div>
-                               
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="au-card m-b-30" style="height: 400px;">
-                                <div class="au-card-inner">
-                                    <h3 class="title-2 m-b-40">銷售品項比率</h3>
-                                    <canvas id="pieChart" style="height: 275px;"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div> {% endcomment %}
                 </div>
             </section>
-            <!-- END STATISTIC CHART-->
+            <!-- END DATA TABLE-->
+
+              
             
+          
 
             <!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
@@ -413,50 +404,44 @@
             <!-- END COPYRIGHT-->
         </div>
 
+        
     </div>
 
-    <!-- Jquery JS-->
-    <script src="{% static 'vendor/jquery-3.2.1.min.js' %}"></script>
-    <!-- Bootstrap JS-->
-    <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
-    <!-- Vendor JS       -->
-    <script src="{% static 'vendor/slick/slick.min.js' %}">
-    </script>
-    <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
-    <script src="{% static 'vendor/animsition/animsition.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
-    </script>
-    <script src="{% static 'vendor/counter-up/jquery.waypoints.min.js' %}"></script>
-    <script src="{% static 'vendor/counter-up/jquery.counterup.min.js' %}">
-    </script>
-    <script src="{% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
-    <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
-    <script src="{% static 'vendor/chartjs/Chart.bundle.min.js' %}"></script>
-    <script src="{% static 'vendor/select2/select2.min.js' %}">
-    </script>
     <script>
-        // 获取下拉菜单元素
-        var dropdownMenu = document.getElementById("dropdownMenu");
-
-        // 获取下拉菜单项的集合
-        var dropdownItems = dropdownMenu.getElementsByClassName("dropdown-item");
-
-        // 遍历下拉菜单项，为每个菜单项添加点击事件监听器
-        for (var i = 0; i < dropdownItems.length; i++) {
-            dropdownItems[i].addEventListener("click", function() {
-                // 获取点击的菜单项的文本内容
-                var selectedValue = this.innerText;
-
-                // 将选中的值显示在按钮上
-                var dropdownButton = document.getElementById("dropdownMenuButton");
-                dropdownButton.innerText = selectedValue;
-            });
+        function redirectToPage() {
+          const select = document.getElementById("mySelect");
+          const selectedValue = select.value;
+        
+          if (selectedValue) {
+            window.location.href = selectedValue;
+          }
         }
+        </script>
 
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
     </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
     <!-- Main JS-->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="js/main.js"></script>
 
 </body>
 

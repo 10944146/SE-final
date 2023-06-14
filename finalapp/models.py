@@ -159,3 +159,17 @@ class Attendance(models.Model):
         #return self.customer_name
     #讓object預設回傳
 
+class profit(models.Model):
+    BID = models.CharField(max_length=20)
+    year = models.IntegerField()
+    one = models.IntegerField()
+    two = models.IntegerField()
+    three = models.IntegerField()
+    four = models.IntegerField()
+    five = models.IntegerField()
+    six = models.IntegerField()
+
+    # def __str__(self):
+        #return self.customer_name
+    #讓object預設回傳
+

@@ -38,63 +38,6 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        try {
-
-            // single bar chart
-            var ctx = document.getElementById("SBCharta");
-            if (ctx) {
-              ctx.height = 150;
-              var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                  labels: ["陳大賀", "汪曉明", "陳一新"],
-                  datasets: [
-                    {
-                      label: "本月銷售總量",
-                      data: [10, 7, 8],
-                      borderColor: "rgba(0, 123, 255, 0.9)",
-                      borderWidth: "0",
-                      backgroundColor: "rgba(0, 123, 255, 0.5)"
-                    }
-                  ]
-                },
-                options: {
-                  legend: {
-                    position: 'top',
-                    labels: {
-                      fontFamily: 'Poppins'
-                    }
-        
-                  },
-                  scales: {
-                    xAxes: [{
-                      ticks: {
-                        fontFamily: "Poppins"
-        
-                      }
-                    }],
-                    yAxes: [{
-                      ticks: {
-                        beginAtZero: true,
-                        fontFamily: "Poppins"
-                      }
-                    }]
-                  }
-                }
-              });
-            }
-
-            
-        
-          } catch (error) {
-            console.log(error);
-          }
-        
-        })(jQuery);  
-</script>
-
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
@@ -115,19 +58,16 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="#">中壢原大店</a>
+                                        <a href="{% url 'branch' branch='B001' %}">中壢中原店</a>
                                     </li>
                                     <li>
-                                        <a href="#">中壢中興店</a>
+                                        <a href="{% url 'branch' branch='B002' %}">中壢中大店</a>
                                     </li>
                                     <li>
-                                        <a href="#">中壢中北店</a>
+                                        <a href="{% url 'branch' branch='B003' %}">中壢中北店</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'branch' %}">中壢中原店</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">中壢中大店</a>
+                                        <a href="{% url 'branch' branch='B004' %}">中壢原大店</a>
                                     </li>
                                 </ul>
                             </li>
@@ -233,20 +173,22 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>分店</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                            <a href="#">
+                                <i class="fas fa-tachometer-alt"></i>分店
+                                <span class="bot-line"></span>
+                            </a>
+                            <ul class="header3-sub-list list-unstyled">
                                 <li>
-                                    <a href="index.html">中壢中原店</a>
+                                    <a href="{% url 'branch' branch='B001' %}">中壢中原店</a>
                                 </li>
                                 <li>
-                                    <a href="index2.html">中壢中原店</a>
+                                    <a href="{% url 'branch' branch='B002' %}">中壢中大店</a>
                                 </li>
                                 <li>
-                                    <a href="index3.html">中壢中原店</a>
+                                    <a href="{% url 'branch' branch='B003' %}">中壢中北店</a>
                                 </li>
                                 <li>
-                                    <a href="index4.html">中壢中原店</a>
+                                    <a href="{% url 'branch' branch='B004' %}">中壢原大店</a>
                                 </li>
                             </ul>
                         </li>
@@ -269,13 +211,13 @@
                                     <a href="customer.html">中壢中原店</a>
                                 </li>
                                 <li>
-                                    <a href="customer1.html">中壢中北店</a>
+                                    <a href="customer1.html">中壢中大店</a>
                                 </li>
                                 <li>
-                                    <a href="customer2.html">中壢中興店</a>
+                                    <a href="customer2.html">中壢中北店</a>
                                 </li>
                                 <li>
-                                    <a href="customer3.html">中壢中大店</a>
+                                    <a href="customer3.html">中壢原大店</a>
                                 </li>
                             </ul>
                         </li>
@@ -376,88 +318,6 @@
             </section>
             <!-- END WELCOME-->
 
-            <!-- 客戶分析簡單版資料-->
-            <section class="statistic statistic2">
-                <div class="container">
-                    <div class="row">
-                        <div class="row m-t-25">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c1">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-account-o"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>368</h2>
-                                                <span>members online</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c2">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-shopping-cart"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>208,002</h2>
-                                                <span>items solid</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>this week</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c4">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-money"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>$760,386</h2>
-                                                <span>total earnings</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart4"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END 客戶分析簡單版資料-->
 
             <!-- 圖表分析-->
             <section class="statistic-chart">
@@ -471,11 +331,58 @@
                         <div class="col-lg-8">
                             <div class="au-card m-b-30">
                                 <div class="au-card-inner">
-                                    <h3 class="title-2 m-b-40">業務員當月各產品銷售台數</h3>
-                                    <canvas id="SBCharta"></canvas>
+                                    <h3 class="title-2 m-b-40">業務員當月銷售台數</h3>
+                                    <canvas id="SBCharta" data-branch-code="{{ branch_code }}"></canvas>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            try {
+                                // single bar chart
+                                var ctx = document.getElementById("SBCharta");
+                                if (ctx) {
+                                    ctx.height = 150;
+                                    var myChart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: {{ sids|safe }},
+                                            datasets: [
+                                                {
+                                                    label: "本月銷售量",
+                                                    data: {{ sacs|safe }},
+                                                    borderColor: "rgba(0, 123, 255, 0.9)",
+                                                    borderWidth: "0",
+                                                    backgroundColor: "rgba(0, 123, 255, 0.5)"
+                                                }
+                                            ]
+                                        },
+                                        options: {
+                                            legend: {
+                                                position: 'top',
+                                                labels: {
+                                                    fontFamily: 'Poppins'
+                                                }
+                                            },
+                                            scales: {
+                                                xAxes: [{
+                                                    ticks: {
+                                                        fontFamily: "Poppins"
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true,
+                                                        fontFamily: "Poppins"
+                                                    }
+                                                }]
+                                            }
+                                        }
+                                    });
+                                }
+                            } catch (error) {
+                                console.log(error);
+                            }
+                        </script>
                         
                         
                         <div class="col-md-6 col-lg-4">
@@ -483,13 +390,59 @@
                             <div class="statistic-chart-2">
                                 <h3 class="title-3 m-b-30">分店業績達成率</h3>
                                 <div class="chart-wrap">
-                                    <canvas id="widgetChart"></canvas>
+                                    <span id="chart-label"></span>
+                                    <canvas id="pieChartA"></canvas>
                                 </div>
-                                <div class="statistic-chart-2-note">
+                                <script>
+                                    try {
+                                        var achievedPercent = parseInt('{{ achieved_percent }}');
+                                        var notAchievedPercent = parseInt('{{ not_achieved_percent }}');
+                                      
+                                        var ctx = document.getElementById("pieChartA");
+                                        if (ctx) {
+                                          ctx.height = 200;
+                                          var myChart = new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                              datasets: [{
+                                                data: [achievedPercent, notAchievedPercent],
+                                                backgroundColor: [
+                                                  "rgba(0, 123, 255,0.9)",
+                                                  "rgba(0,0,0,0.07)"
+                                                ],
+                                                hoverBackgroundColor: [
+                                                  "rgba(0, 123, 255,0.9)",
+                                                  "rgba(0,0,0,0.07)"
+                                                ]
+                                              }],
+                                              labels: [
+                                                "已達成",
+                                                "未達成"
+                                              ]
+                                            },
+                                            options: {
+                                              legend: {
+                                                position: 'top',
+                                                labels: {
+                                                  fontFamily: 'Poppins'
+                                                }
+                                              },
+                                              responsive: true
+                                            }
+                                          });
+                                      
+                                          
+                                        }
+                                      } catch (error) {
+                                        console.log(error);
+                                      }
+                                      
+                                </script>
+                                {% comment %} <div class="statistic-chart-2-note">
                                     <span>* 總計4間分店</span><br>
                                     <span>* 按照分店編號排列</span><br>
                                     <span>* 各分店有所不同</span>
-                                </div>
+                                </div> {% endcomment %}
                             </div>
                             <!-- END CHART-->
                         </div>
@@ -505,86 +458,58 @@
                                 </div>
                                 <script>
                                     try {
-
-                                        // 新舊客戶佔比
                                         var ctx = document.getElementById("PCA");
                                         if (ctx) {
-                                          ctx.height = 209;
-                                          var myChart = new Chart(ctx, {
-                                            type: 'doughnut',
-                                            data: {
-                                              datasets: [
-                                                {
-                                                  label: "新舊客戶佔比",
-                                                  data: [23, 2],
-                                                  backgroundColor: [
-                                                    '#0066CC',
-                                                    '#EA7500'
-                                                  ],
-                                                  hoverBackgroundColor: [
-                                                    '#0066CC',
-                                                    '#EA7500'
-                                                  ],
-                                                  borderWidth: [
-                                                    0, 0
-                                                  ],
-                                                  hoverBorderColor: [
-                                                    'transparent',
-                                                    'transparent'
-                                                  ]
+                                            ctx.height = 209;
+                                            var myChart = new Chart(ctx, {
+                                                type: 'doughnut',
+                                                data: {
+                                                    datasets: [{
+                                                        label: "新舊客戶比率",
+                                                        data: [{{ new_percent }}, {{ old_percent }}],
+                                                        backgroundColor: [
+                                                            '#0066CC',
+                                                            '#EA7500'
+                                                        ],
+                                                        hoverBackgroundColor: [
+                                                            '#0066CC',
+                                                            '#EA7500'
+                                                        ],
+                                                        borderWidth: [0, 0],
+                                                        hoverBorderColor: ['transparent', 'transparent']
+                                                    }],
+                                                    labels: ['新客戶', '舊客戶']
+                                                },
+                                                options: {
+                                                    maintainAspectRatio: false,
+                                                    responsive: true,
+                                                    cutoutPercentage: 87,
+                                                    animation: {
+                                                        animateScale: true,
+                                                        animateRotate: true
+                                                    },
+                                                    legend: {
+                                                        display: false,
+                                                        position: 'bottom',
+                                                        labels: {
+                                                            fontSize: 14,
+                                                            fontFamily: "Poppins,sans-serif"
+                                                        }
+                                                    },
+                                                    tooltips: {
+                                                        titleFontFamily: "Poppins",
+                                                        xPadding: 15,
+                                                        yPadding: 10,
+                                                        caretPadding: 0,
+                                                        bodyFontSize: 16,
+                                                    }
                                                 }
-                                              ],
-                                              labels: [
-                                                '新客戶',
-                                                '舊客戶'
-                                              ]
-                                            },
-                                            options: {
-                                              maintainAspectRatio: false,
-                                              responsive: true,
-                                              cutoutPercentage: 87,
-                                              animation: {
-                                                animateScale: true,
-                                                animateRotate: true
-                                              },
-                                              legend: {
-                                                display: false,
-                                                position: 'bottom',
-                                                labels: {
-                                                  fontSize: 14,
-                                                  fontFamily: "Poppins,sans-serif"
-                                                }
-                                    
-                                              },
-                                              tooltips: {
-                                                titleFontFamily: "Poppins",
-                                                xPadding: 15,
-                                                yPadding: 10,
-                                                caretPadding: 0,
-                                                bodyFontSize: 16,
-                                              }
-                                            }
-                                          });
+                                            });
                                         }
-                                    
-                                      } catch (error) {
+                                    } catch (error) {
                                         console.log(error);
-                                      }
-                                    
+                                    }
                                 </script>
-                                {% comment %} <div class="chart-info">
-                                    <div class="chart-note">
-                                        <span class="dot dot--one"></span>
-                                        <span>舊客戶</span>
-                                    </div>
-                                    <div class="chart-note">
-                                        <span class="dot dot--two"></span>
-                                        <span>新客戶</span>
-                                    </div>
-                                </div>
-                                <div class="statistic-chart-2-note">
-                                    <span>* 計算單位為%</span>
-                                </div> {% endcomment %}
                             </div>
                             <!-- END 新舊客戶佔比-->
                         </div>
@@ -592,6 +517,8 @@
                             <!-- RECENT REPORT 2-->
                             <div class="recent-report2">
                                 <h3 class="title-3">上半年銷售金額</h3>
+                                <p>Data3: {{ data3 }}</p>
+                                <p>Data4: {{ data4 }}</p>
                                 <div class="chart-info">
                                     <div class="chart-info__left">
                                         <div class="chart-note">
@@ -601,8 +528,94 @@
                                     </div>
                                 </div>
                                 <div class="recent-report__chart">
-                                    <canvas id="recent-rep2-chart"></canvas>
+                                    <canvas id="recent-rep2-chartA"></canvas>
                                 </div>
+                                <script>
+                                    try {
+                                        const bd_brandProduct2 = 'rgba(0,181,233,0.9)';
+                                        const bd_brandService2 = 'rgba(0,173,95,0.9)';
+                                        const brandProduct2 = 'rgba(0,181,233,0.2)';
+                                        const brandService2 = 'rgba(0,173,95,0.2)';
+                                
+                                        var data3 =  {{ data3 }}
+                                        var data4 =  {{ data4 }}
+                                    
+                                        var ctx = document.getElementById("recent-rep2-chartA");
+                                        if (ctx) {
+                                            ctx.height = 230;
+                                            var myChart = new Chart(ctx, {
+                                                type: 'line',
+                                                data: {
+                                                    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                                                    datasets: [
+                                                      {
+                                                        label: 'My First dataset',
+                                                        backgroundColor: brandService2,
+                                                        borderColor: bd_brandService2,
+                                                        pointHoverBackgroundColor: '#fff',
+                                                        borderWidth: 0,
+                                                        data: data3
+                                                      },
+                                                      {
+                                                        label: 'My Second dataset',
+                                                        backgroundColor: brandProduct2,
+                                                        borderColor: bd_brandProduct2,
+                                                        pointHoverBackgroundColor: '#fff',
+                                                        borderWidth: 0,
+                                                        data: data4
+                                                      }
+                                                    ]
+                                                  },
+                                                options: {
+                                                    maintainAspectRatio: true,
+                                                    legend: {
+                                                        display: false
+                                                    },
+                                                    responsive: true,
+                                                    scales: {
+                                                        xAxes: [{
+                                                            gridLines: {
+                                                                drawOnChartArea: true,
+                                                                color: '#f2f2f2'
+                                                            },
+                                                            ticks: {
+                                                                fontFamily: "Poppins",
+                                                                fontSize: 12
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            ticks: {
+                                                                beginAtZero: true,
+                                                                maxTicksLimit: 5,
+                                                                stepSize: 50,
+                                                                max: 150,
+                                                                fontFamily: "Poppins",
+                                                                fontSize: 12
+                                                            },
+                                                            gridLines: {
+                                                                display: true,
+                                                                color: '#f2f2f2'
+                                                            }
+                                                        }]
+                                                    },
+                                                    elements: {
+                                                        point: {
+                                                            radius: 0,
+                                                            hitRadius: 10,
+                                                            hoverRadius: 4,
+                                                            hoverBorderWidth: 3
+                                                        },
+                                                        line: {
+                                                            tension: 0
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    } catch (error) {
+                                        console.log(error);
+                                    }
+                                </script>
                             </div>
                             <!-- END RECENT REPORT 2             -->
                         </div>

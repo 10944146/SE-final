@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import Salesperson, Branch,SalesDetail
+from .models import Salesperson, Branch,profit
+from django.template.defaultfilters import floatformat
+from django.db.models import Sum
 from django.http import JsonResponse
 
 
@@ -68,5 +70,52 @@ def get_salesperson_data(request):
 def branch(request):
     return render(request, 'branch.html')
 
-def branch_view(request):
-    return render(request, 'branch.html')
+
+
+def branch_view(request, branch):
+    branches = Branch.objects.filter(BID=branch, SMON='5')
+    sids = []
+    sacs = []
+    for branch_obj in branches:
+        sids.append(branch_obj.SID)
+        sacs.append(branch_obj.SAc)
+    
+    sac_sum = sum(sacs)
+    stc_sum = Branch.objects.filter(BID=branch, SMON='5').aggregate(stc_sum=Sum('STc'))['stc_sum']
+
+    if stc_sum is None:
+        return render(request, 'branch.html', {'branch_code': branch})
+
+    achieved_percent = int((sac_sum / stc_sum) * 100)
+    not_achieved_percent = 100 - achieved_percent
+
+    new_sum = 0
+    old_sum = 0
+    branch_obj = Branch.objects.filter(BID=branch).first()
+    if branch_obj:
+        new_sum = branch_obj.SNew
+        old_sum = branch_obj.SOld
+    data3=[]
+    data4=[]
+    data3 = list(profit.objects.filter(BID=branch, year=2022).values_list('one', 'two', 'three', 'four', 'five', 'six').first())
+    data4 = list(profit.objects.filter(BID=branch, year=2023).values_list('one', 'two', 'three', 'four', 'five', 'six').first())
+
+    context = {
+        'branch_code': branch,
+        'sids': sids,
+        'sacs': sacs,
+        'achieved_percent': achieved_percent,
+        'not_achieved_percent': not_achieved_percent,
+        'new_percent': new_sum / (new_sum + old_sum),
+        'old_percent': old_sum / (new_sum + old_sum),
+        'data3': data3,
+        'data4': data4,
+    }
+
+    return render(request, 'branch.html', context)
+
+
+
+
+
+

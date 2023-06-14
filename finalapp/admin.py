@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import customer,purchase,SalesDetail,MassageChair,Branch,KPI,Salesperson, SalesTarget, Coupon, CouponUsage, Attendance,EXM
+from .models import customer,purchase,SalesDetail,MassageChair,Branch,KPI,Salesperson, SalesTarget, Coupon, CouponUsage, Attendance,EXM,profit
 
 
 # @admin.register(customer)
@@ -39,6 +39,9 @@ class AttendanceAdmin(admin.ModelAdmin):
 class EXMAdmin(admin.ModelAdmin):
     list_display = ['MID', 'MNAME', 'MFuction', 'EXMAmount','MClass']
 
+class profitAdmin(admin.ModelAdmin):
+    list_display = ['BID', 'year', 'one', 'two','three', 'four', 'five','six']
+
 # Register your models here.
 admin.site.register(customer,CustomerAdmin)
 admin.site.register(purchase, PurchaseAdmin)
@@ -52,4 +55,5 @@ admin.site.register(Coupon,CouponAdmin)
 admin.site.register(CouponUsage,CouponUsageAdmin)
 admin.site.register(Attendance,AttendanceAdmin)
 admin.site.register(EXM,EXMAdmin)
+admin.site.register(profit,profitAdmin)
 
